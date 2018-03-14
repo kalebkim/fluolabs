@@ -6,37 +6,41 @@ keys_col = []
 def setup():
     global ch, x, y
     size(600, 600)
-    background(220)
+    background(0)
     textSize(32)
-
-    keys.append('TURTLES')
+    
+    keys.append(key)
     keys_x.append(width/2)
     keys_y.append(0)
     keys_col.append(color(random(256), random(256), random(256)))
-    
+                
 def draw():
     global ch, x, y
-    background(220)
-    #fill(random(256), random(256), random(256))
+    background(0)
     
     for i in range(len(keys)):
         fill(keys_col[i])
         text(keys[i], keys_x[i], keys_y[i])
-        keys_y[i] += 10
-    
+        keys_y[i] += 50
+        
         if (keys_y[i] > height):
             keys_y[i] = 0
-    
-    fill(0)
+            
+    fill(255)
     text(str(len(keys)), width - 100, 32)
     
 def keyTyped():
-    keys.append('TURTLES')
+    keys.append(key)
     keys_x.append(random(width))
     keys_y.append(0)
     keys_col.append(color(random(256), random(256), random(256)))
-
+    
     if (key == ' '):
-        del keys[:]
+        del keys [:]
         del keys_x[:]
         del keys_y[:]
+        
+    print('I like turtles')
+
+        
+    
