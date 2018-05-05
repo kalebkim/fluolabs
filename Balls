@@ -1,0 +1,26 @@
+t = 0
+t1 = 0
+t2 = 0
+t3 = 0
+def setup():
+    size(600, 600)
+    frameRate(60)
+    
+def draw():
+    global t, t1, t2, t3
+    background(0)
+    
+    ellipse(random(width), height* 1/5, 40, 40) 
+    t1 += .02
+    ellipse(random(width), height* 2/5, 40, 40)
+    t2 += .03
+    ellipse(random(width), height* 3/5, 40, 40)
+    t3 += .04
+        
+    x = noise(t)
+    x = map(x, 0, 1, 0, 600)
+    ellipse(x, height* 4/5, 40, 40)
+    print(x)
+    
+    t += .01
+    
