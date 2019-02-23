@@ -1,0 +1,34 @@
+
+def setup():
+    global pman
+    size(800, 600)
+    pman = Pacman(width/2, height/2)
+
+
+def draw():
+    background(0)
+    
+    pman.show()
+    
+    
+    
+    
+class Pacman():
+    diameter = 40
+    radius = diameter/2
+    mouth = 45    # open mouth
+    mSpeed = -3
+    angle = 0     # right
+    speed = 1
+    
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
+    def show(self):
+        fill(255, 255, 0)
+        arc(self.x, self.y, self.diameter, self.diameter, radians(self.mouth), radians(360-self.mouth))
+        self.mouth = self.mouth + self.mSpeed
+        if (self.mouth < 0 or self.mouth > 45):
+            self.mSpeed = self.mSpeed * -1
+                            
