@@ -1,0 +1,31 @@
+def setup():
+    global x, y, xspeed, yspeed
+    size(600, 600)
+    x = random(width)
+    y = random(height) 
+    
+    xspeed = random(-100, 100)
+    yspeed = random(-100, 100)
+    
+def draw():
+    global x, y, xspeed, yspeed
+    background(0)
+    circle(x, y, 40) 
+    
+    x = x + xspeed
+    y = y + yspeed
+    
+    
+    # if on edge bounce
+    if x > width or x < 0:
+        xspeed = xspeed * -1
+        
+    if y > height or y < 0:
+        yspeed = yspeed * -1
+        
+    textSize(20)
+    text('x=' + str(x), 20, 20)
+    text('y=' + str(y), 20, 40)
+    text('xspeed=' + str(xspeed), 20, 60)
+    text('yspeed=' + str(yspeed), 20, 80)
+    
