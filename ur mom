@@ -1,0 +1,54 @@
+#sketch.py
+def setup():
+    global x, y, xspeed, yspeed, dia
+    size(600, 600)
+    x = random(width)
+    y = random(height)
+    
+    xspeed = random(-50, 50)
+    yspeed = random(-50, 50)
+    dia = 50
+    print(x, y)
+    
+def draw():
+    global x, y, xspeed, yspeed, dia
+    background(0)
+    
+    #show
+    circle(x, y, dia)
+    
+    #update
+    x = x + xspeed
+    y = y + yspeed
+    
+    #if on edge, bounce
+    if x < 0 or x > width:
+        xspeed = xspeed * -1
+    if y < 0 or y > height:
+        yspeed = yspeed * -1
+    
+    #display info
+    text('x=' + str(round(x, 2)), 0, 20)
+    text('y=' + str(round(y, 2)), 0, 40) 
+    text('xspeed=' + str(round(xspeed, 2)), 0, 60)
+    text('yspeed=' + str(round(yspeed, 2)), 0, 80) 
+    textSize(20)
+    
+def mousePressed():
+    global xspeed, yspeed
+    if mouseButton == LEFT:
+        xspeed += 1
+        yspeed += 1
+    else:
+        xspeed -= 1
+        yspeed -= 1
+    
+def keyPressed():
+    global dia
+    
+    if (key == UP):
+        dia += 5
+    if (key == DOWN):
+        dia -= 5
+        
+    print(dia)
