@@ -1,0 +1,39 @@
+
+mList=[]
+
+def setup():
+    global m
+    fullScreen()
+    for i in range(400):
+        mList.append(Mover())
+    
+def draw():
+    background(0)
+    for i in range(400):
+        mList[i].show()
+        mList[i].update()
+        mList[i].checkEdges()
+    
+class Mover():
+    def __init__(self):
+        self.xspeed, self.yspeed = random(-5, 5), random(-5, 5)
+        self.x, self.y = random(width), random(height)
+    
+    def show(self):
+        noStroke()
+        fill(random(256), random(256), random(256))
+        circle(self.x, self.y, random(3, 7))
+        
+    def update(self):
+        self.x = self.x + self.xspeed
+        self.y = self.y + self.yspeed
+        
+    def checkEdges(self):
+        if self.x < 0 or self.x > width:
+            self.xspeed *= -1
+        if self.y < 0 or self.y > height:
+            self.yspeed *= -1
+            
+    
+    
+    
